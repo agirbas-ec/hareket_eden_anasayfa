@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+    <title>Document</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #333;
+  color: #222;
+  overflow-x: hidden;
+  margin: 0;
+}
+.container{
+    background-color: #fafafa;
+    transform-origin: top left;
+    transition: transform 0.5s linear;
+    width: 100vh;
+    min-height: 100vh;
+    padding: 50px;
+}
+
+.container.show-nav{
+    transform: rotate(-20deg);
+}
+.circle-container{
+    position: fixed;
+    top: -100px;
+    left: -100px;
+
+}
+
+.circle{
+    background-color: #ff7979;
+    height: 200px;
+    width: 200px;
+    border-radius:50% ;
+    position: relative;
+    transition: transform 0.5 linear;
+}
+
+.container.container.show-nav .circle{
+    transform: rotate(-70deg);
+}
+
+.circle button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100px;
+    background: transparent;
+    border: 0;
+    font-size: 26px;
+    color: #fff;
+}
+.circle button :focus{
+    outline: none;
+}
+.circle button#open{
+    left: 60%;
+}
+.circle button#close{
+    top: 60%;
+    transform: rotate(90deg);
+    transform-origin: top left ;
+
+}
+
+.container.show-nav + nav li {
+    transform: translateX(0);
+    transition-delay: 0.3s;
+
+
+}
+nav{
+position: fixed;
+bottom: 40px;
+left: 0;
+z-index: 100;
+
+}
+nav ul{
+    list-style-type: none;
+    padding-left: 30px;
+
+}
+ nav ul li{
+     text-transform: uppercase;
+     color: #fff;
+     margin: 40px 0;
+     transform: translateX(-100%);
+     transition: transform 0.4s ease-in;
+ }
+ nav ul li i{
+     font-size: 20px;
+     margin-right: 10px;
+ }
+
+ nav ul li + li{
+     margin-left: 15px;
+     transform: translateX(-150%);
+
+ } 
+
+ nav ul li + li +li{
+     margin-left: 30px;
+     transform: translateX(-200%);
+
+ } 
+.content img{
+    max-width: 100%;
+}
+.content{
+    max-width: 1000px;
+    margin: 50px auto;
+}
+.content h1{
+    margin: 0;
+}
+.content small{
+   color: #555;
+   font-style: italic; 
+}
+.content p{
+    color: #333;
+    line-height: 1.5;
+}
+
+</style>
+<body>
+  
+    <div class="container show-nav ">
+        <div class="circle-container">
+            <div class="circle">
+                <button id="close">
+         <i class="fas fa-times"></i>
+                </button>
+                <button id="open">
+                    <i class="fas fa-bars">
+
+                    </i>
+                </button>
+            </div>
+        </div>
+<div class="container">
+    <h1>Harika Hayvanlar</h1>
+    <small>Papağan </small>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error iste ratione illo fugiat sunt, iusto voluptates quam non, ipsa recusandae maxime alias harum dicta mollitia quod quis cupiditate! Ad, aliquam quae molestias inventore similique pariatur expedita alias fugit, provident rem vero. Quo exercitationem quisquam expedita enim laborum quod earum? Magnam, itaque. Ut, qui. Voluptatibus velit praesentium dignissimos quam repellat, eum aspernatur, dolor, facilis ea necessitatibus nulla sequi nemo quia dolorum aperiam! Dolor iusto velit sed eos, eius mollitia obcaecati molestias numquam sit. Blanditiis nam repellat officiis similique nisi, ea dolorum assumenda. Atque commodi error non cumque tempore, eius deserunt nesciunt?</p>
+
+    <h3>Benim hayvanım</h3>
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab eaque consequuntur molestias doloribus. Quis magnam quasi autem eos sint laborum excepturi vitae animi odio nesciunt, aut dicta ipsum ipsam deleniti rerum voluptatibus ex possimus nobis, voluptatum corrupti hic architecto. Nostrum, dolorem fugit! Earum aliquam cumque illo, et molestias iure asperiores qui in, quia ab nemo tenetur magni temporibus, veniam ipsum animi delectus magnam eaque eum suscipit sequi. Dolores iusto nesciunt, optio enim quas ad? Doloremque.</p>
+    <img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80" alt="">
+
+</div>
+
+    </div>
+
+
+<nav>
+    <ul>
+        <li> <i class="fas fa-home"></i> Anasayfa</li>
+        <li> <i class="fas fa-user-alt"></i> Hakkında</li>
+        <li> <i class="fas fa-envelope"></i> İletişim</li>
+
+    </ul>
+</nav>
+
+<script>
+
+
+const open =document.getElementById('open')
+const close =document.getElementById('close')
+const container =document.querySelector('.container')
+
+open.addEventListener('click', ()=> container.classList.add('show-nav'))
+close.addEventListener('click', ()=> container.classList.remove('show-nav'))
+
+
+
+</script>
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+</body>
+</html>
